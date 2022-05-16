@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/cardview_height"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginVertical="3dp"
+    app:cardBackgroundColor="?colorPrimary"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/id_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/example_number"
+            android:textColor="?colorOnPrimary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/id_date"
+            app:layout_constraintEnd_toStartOf="@id/id_topic"
+            app:layout_constraintHorizontal_weight="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id_heading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/dummytext"
+            android:textColor="?colorOnPrimary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/id_topic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="90"
+            app:layout_constraintStart_toEndOf="@id/id_number"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id_topic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/dummytext"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toTopOf="@id/id_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="90"
+            app:layout_constraintStart_toEndOf="@id/id_number"
+            app:layout_constraintTop_toBottomOf="@id/id_heading" />
+
+        <TextView
+            android:id="@+id/id_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="bottom"
+            android:text="@string/example_date"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/id_topic" />
+        M
+
+        <TextView
+            android:id="@+id/id_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/type"
+            android:textColor="?colorOnPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/id_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/id_date"
+            app:layout_constraintTop_toTopOf="@id/id_date" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="?colorOnSecondary" />
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.notesapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_undraw_taking_notes_re_bnaf"
+        android:label="@string/notify"
+        android:roundIcon="@drawable/ic_undraw_taking_notes_re_bnaf"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NotesApp">
+        <activity
+            android:name=".ui.activities.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NotesApp.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NotesApp">
+
+        </activity>
+    </application>
+
+</manifest>

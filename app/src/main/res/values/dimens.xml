@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="animation_height">300dp</dimen>
+    <dimen name="text_heading">30sp</dimen>
+    <dimen name="linearlayout_height">40dp</dimen>
+    <dimen name="cardview_height">150dp</dimen>
+</resources>
