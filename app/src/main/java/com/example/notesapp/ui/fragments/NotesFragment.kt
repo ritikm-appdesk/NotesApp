@@ -30,8 +30,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
     ): View? {
         return inflater.inflate(R.layout.notes_fragment, container, false)
     }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,8 +43,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         iddate.text = note.date
         idbody.text = note.body
         idtype.text = note.type
-
-
 
         back.setOnClickListener{
             findNavController().popBackStack()
@@ -94,6 +90,4 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
            }
         }
     }
-
-
 }

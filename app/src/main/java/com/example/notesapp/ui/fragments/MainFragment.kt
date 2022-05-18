@@ -38,14 +38,14 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
         val repository = AppRepository(AppDatabase(requireActivity()))
         val viewModelFactory = NotesViewModelProviderFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
-        viewModel.getAll().observe(viewLifecycleOwner, {
+        viewModel.getAll().observe(viewLifecycleOwner){
             if (it.isEmpty()) {
                 defaultid.visibility = View.VISIBLE
             } else {
                 defaultid.visibility = View.VISIBLE
             }
             setupRV(it as MutableList<Notes>)
-        })
+        }
         fab.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_addNoteFragment)
         }
@@ -111,7 +111,5 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
         ItemTouchHelper(itemTouchHelper).apply {
             attachToRecyclerView(id_rv)
         }
-
     }
-
 }

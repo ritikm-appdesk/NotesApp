@@ -49,9 +49,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 id: Long
             ) {
                 type = resources.getStringArray(R.array.type)[position]
-
             }
-
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
@@ -78,6 +76,4 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         }
     }
-
-
 }
