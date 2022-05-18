@@ -2,7 +2,6 @@ package com.example.notesapp.ui.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,7 @@ import com.example.notesapp.viewmodel.NotesViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment(R.layout.fragment_main) {
+class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickListener {
 
     private lateinit var rvAdapter: AppRVAdapter
     private lateinit var viewModel: NotesViewModel
@@ -41,22 +40,33 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val viewModelFactory = NotesViewModelProviderFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
         viewModel.getAll().observe(viewLifecycleOwner, Observer {
-            if (it.size <= 0) {
+            if (it.isEmpty()) {
                 defaultid.visibility = View.VISIBLE
             } else {
                 defaultid.visibility = View.VISIBLE
             }
-            setupRV(it)
+            setupRV(it as MutableList<Notes>)
         })
         fab.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_addNoteFragment)
         }
 
     }
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onItemClick(note: Notes) {
+        viewModel.delete(note)
+        rvAdapter.notifyDataSetChanged()
+        Snackbar.make(requireView(), "Note Deleted!", Snackbar.LENGTH_LONG).apply {
+            setAction("Undo") {
+                viewModel.insert(note)
+            }
+            show()
+        }
+    }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun setupRV(ls: List<Notes>) {
-        rvAdapter = AppRVAdapter(ls)
+    private fun setupRV(ls: MutableList<Notes>) {
+        rvAdapter = AppRVAdapter(ls,this)
         if (ls.size == 0) {
             defaultid.visibility = View.VISIBLE
         } else {
@@ -75,7 +85,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
             findNavController().navigate(R.id.action_mainFragment_to_notesFragment, bundle)
         }
-        var itemTouchHelper = object : ItemTouchHelper.SimpleCallback(
+        val itemTouchHelper = object : ItemTouchHelper.SimpleCallback(
             0,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
         ) {
@@ -89,7 +99,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val note = rvAdapter.ls.get(position)
+                val note = rvAdapter.ls[position]
                 viewModel.delete(note)
                 Snackbar.make(view!!, "Note Deleted!", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {

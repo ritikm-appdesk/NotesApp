@@ -14,4 +14,5 @@
     <string name="type">type</string>
     <string name="enter_your_note">Enter your Note</string>
     <string name="notify">NOTIFY</string>
+    <string name="notes_image">Notes Image</string>
 </resources>

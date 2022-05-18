@@ -1,10 +1,14 @@
 package com.example.notesapp.ui.fragments
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,13 +23,14 @@ import kotlinx.android.synthetic.main.notes_fragment.*
 
 class NotesFragment : Fragment(R.layout.notes_fragment) {
     private lateinit var viewModel: NotesViewModel
-    val args: NotesFragmentArgs by navArgs()
+    private val args: NotesFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.notes_fragment, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,8 +46,10 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
         idbody.text = note.body
         idtype.text = note.type
 
-        back.setOnClickListener {
-            findNavController().navigate(R.id.action_notesFragment_to_mainFragment)
+
+
+        back.setOnClickListener{
+            findNavController().popBackStack()
         }
 
         idiv.setOnClickListener {
@@ -52,10 +59,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             switcher2.showNext()
         }
         id_ive.setOnClickListener {
-            switcher.showNext()
-            switcheriv.showNext()
-            switcher1.showNext()
-            switcher2.showNext()
+
             idbody.text = idebody.text
             idheading.text = heading.text
             var t = resources.getStringArray(R.array.type)[0]
@@ -77,8 +81,26 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             val head = idheading.text.toString()
             val body = idbody.text.toString()
             val types = t
-            viewModel.update(Notes(note.id, head, body, note.date, types))
+           id_ive.setOnClickListener{
+               if(!TextUtils.isEmpty(idheading.text.toString()) && !TextUtils.isEmpty(idbody.text.toString())){
+                   viewModel.update(Notes(note.id, head, body, note.date, types))
+                   switcher.showNext()
+                   switcheriv.showNext()
+                   switcher1.showNext()
+                   switcher2.showNext()
+               }else{
+                   Toast.makeText(requireContext(),"Not done",Toast.LENGTH_SHORT).show()
+               }
+           }
         }
+    }
+    private fun backButtonHandle() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    activity?.let { finishAffinity(it) }
+                }
+            })
     }
 
 

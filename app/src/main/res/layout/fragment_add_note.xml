@@ -18,8 +18,8 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/text_heading"
             android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/tendp"
+            android:layout_marginTop="@dimen/tendp"
             android:src="@drawable/icons8_left_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,10 +27,10 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/fivedp"
             android:fadingEdge="vertical"
-            android:fadingEdgeLength="10dp"
-            android:padding="20sp"
+            android:fadingEdgeLength="@dimen/tendp"
+            android:padding="@dimen/twentysp"
             android:scrollbars="none"
             app:layout_constraintTop_toBottomOf="@id/back_button">
 
@@ -65,7 +65,7 @@
 
                     <ImageView
                         android:id="@+id/id_iv"
-                        android:layout_width="25dp"
+                        android:layout_width="@dimen/twentyfivedp"
                         android:layout_height="@dimen/text_heading"
                         android:layout_gravity="center"
                         android:layout_weight="0.1"
@@ -91,10 +91,7 @@
                     android:hint="@string/enter_your_note"
                     android:textColor="?colorOnPrimary"
                     android:textColorHint="?colorOnPrimary" />
-
-
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

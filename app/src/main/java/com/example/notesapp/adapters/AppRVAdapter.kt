@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.databinding.ListItemBinding
 import com.example.notesapp.model.Notes
 
-class AppRVAdapter(val ls: List<Notes>) : RecyclerView.Adapter<AppRVAdapter.AppViewHolder>() {
-    class AppViewHolder(val b: ListItemBinding) : RecyclerView.ViewHolder(b.root) {
+class AppRVAdapter(val ls: MutableList<Notes>, val deleteListener: DeleteClickListener) :
+    RecyclerView.Adapter<AppRVAdapter.AppViewHolder>() {
 
+    class AppViewHolder(val b: ListItemBinding) : RecyclerView.ViewHolder(b.root)
+
+    interface DeleteClickListener {
+        fun onItemClick(note: Notes)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
@@ -22,7 +26,7 @@ class AppRVAdapter(val ls: List<Notes>) : RecyclerView.Adapter<AppRVAdapter.AppV
         )
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
         val note = ls.get(position)
         holder.b.apply {
@@ -34,6 +38,9 @@ class AppRVAdapter(val ls: List<Notes>) : RecyclerView.Adapter<AppRVAdapter.AppV
 
             root.setOnClickListener {
                 onItemClickListener?.let { it(note) }
+            }
+            ivDelete.setOnClickListener {
+                deleteListener.onItemClick(note)
             }
         }
     }

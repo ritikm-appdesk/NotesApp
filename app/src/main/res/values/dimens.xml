@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="animation_height">300dp</dimen>
-    <dimen name="text_heading">30sp</dimen>
+    <dimen name="text_heading">30dp</dimen>
     <dimen name="linearlayout_height">40dp</dimen>
     <dimen name="cardview_height">150dp</dimen>
-
+    <dimen name="twodp">2dp</dimen>
+    <dimen name="threedp">3dp</dimen>
+    <dimen name="zerodp">0dp</dimen>
+    <dimen name="tendp">10dp</dimen>
+    <dimen name="thirtysp">30sp</dimen>
+    <dimen name="fivedp">5dp</dimen>
+    <dimen name="onedp">1dp</dimen>
+    <dimen name="twentydp">20dp</dimen>
+    <dimen name="fourdp">4dp</dimen>
+    <dimen name="twentysp">20sp</dimen>
+    <dimen name="twentyfivedp">25dp</dimen>
+    <dimen name="twohundreddp">200dp</dimen>
+    <dimen name="fortydp">40dp</dimen>
+    <dimen name="thritysp">30sp</dimen>
 </resources>

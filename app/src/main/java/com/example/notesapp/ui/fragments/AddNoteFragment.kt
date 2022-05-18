@@ -59,7 +59,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             }
         })
         back_button.setOnClickListener {
-            findNavController().navigate(R.id.action_addNoteFragment_to_mainFragment)
+            findNavController().popBackStack()
         }
 
         id_iv.setOnClickListener {

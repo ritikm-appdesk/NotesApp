@@ -18,9 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/text_heading"
             android:layout_gravity="start"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/tendp"
+            android:layout_marginTop="@dimen/tendp"
             android:backgroundTint="?colorOnPrimary"
+            android:contentDescription="@string/notes_image"
             android:src="@drawable/icons8_left_arrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +30,10 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/fivedp"
             android:fadingEdge="vertical"
-            android:fadingEdgeLength="10dp"
-            android:padding="20sp"
+            android:fadingEdgeLength="@dimen/tendp"
+            android:padding="@dimen/twentysp"
             android:scrollbars="none"
             app:layout_constraintTop_toBottomOf="@id/back">
 
@@ -43,7 +44,7 @@
 
                 <com.airbnb.lottie.LottieAnimationView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/twohundreddp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
                     app:lottie_rawRes="@raw/man_task"
@@ -51,7 +52,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/fortydp"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -67,7 +68,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/heading"
                             android:textColor="?colorOnPrimary"
-                            android:textSize="30sp"
+                            android:textSize="@dimen/thritysp"
                             android:textStyle="bold" />
 
                         <EditText
@@ -77,7 +78,6 @@
                             android:backgroundTint="?colorOnPrimary"
                             android:hint="@string/heading"
                             android:textColorHint="?colorOnPrimary" />
-
 
                     </ViewSwitcher>
 
@@ -89,7 +89,7 @@
 
                         <ImageView
                             android:id="@+id/idiv"
-                            android:layout_width="25dp"
+                            android:layout_width="@dimen/twentyfivedp"
                             android:layout_height="@dimen/text_heading"
                             android:layout_gravity="center"
                             android:layout_weight="0.1"
@@ -99,7 +99,7 @@
 
                         <ImageView
                             android:id="@+id/id_ive"
-                            android:layout_width="25dp"
+                            android:layout_width="@dimen/twentydp"
                             android:layout_height="@dimen/text_heading"
                             android:layout_gravity="center"
                             android:layout_weight="0.1"
@@ -107,7 +107,6 @@
                             android:backgroundTint="?colorOnPrimary"
                             android:hapticFeedbackEnabled="true" />
                     </ViewSwitcher>
-
 
                 </LinearLayout>
 
@@ -148,7 +147,7 @@
                             android:id="@+id/id_stype"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginVertical="10dp"
+                            android:layout_marginVertical="@dimen/tendp"
                             android:backgroundTint="?colorOnPrimary"
                             android:entries="@array/type"
                             android:foregroundTint="?colorOnPrimary"
@@ -161,8 +160,8 @@
 
                 <View
                     android:layout_width="wrap_content"
-                    android:layout_height="1dp"
-                    android:layout_marginVertical="5dp"
+                    android:layout_height="@dimen/onedp"
+                    android:layout_marginVertical="@dimen/fivedp"
                     android:background="?colorOnPrimary" />
 
                 <ViewSwitcher
@@ -183,13 +182,12 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="?colorOnPrimary"
                         android:hint="@string/enter_your_note"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
                         android:textColor="?colorOnPrimary"
                         android:textColorHint="?colorOnPrimary" />
                 </ViewSwitcher>
-
-
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>
