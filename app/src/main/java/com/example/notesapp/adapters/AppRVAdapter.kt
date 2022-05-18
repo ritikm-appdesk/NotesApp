@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.databinding.ListItemBinding
 import com.example.notesapp.model.Notes
 
-class AppRVAdapter(val ls: MutableList<Notes>, val deleteListener: DeleteClickListener) :
+class AppRVAdapter(val ls: MutableList<Notes>, private val deleteListener: DeleteClickListener) :
     RecyclerView.Adapter<AppRVAdapter.AppViewHolder>() {
 
     class AppViewHolder(val b: ListItemBinding) : RecyclerView.ViewHolder(b.root)
@@ -28,7 +28,7 @@ class AppRVAdapter(val ls: MutableList<Notes>, val deleteListener: DeleteClickLi
 
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
-        val note = ls.get(position)
+        val note = ls[position]
         holder.b.apply {
             idNumber.text = (position + 1).toString()
             idDate.text = note.date

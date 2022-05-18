@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -38,8 +37,8 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
         super.onViewCreated(view, savedInstanceState)
         val repository = AppRepository(AppDatabase(requireActivity()))
         val viewModelFactory = NotesViewModelProviderFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
-        viewModel.getAll().observe(viewLifecycleOwner, Observer {
+        viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
+        viewModel.getAll().observe(viewLifecycleOwner, {
             if (it.isEmpty()) {
                 defaultid.visibility = View.VISIBLE
             } else {

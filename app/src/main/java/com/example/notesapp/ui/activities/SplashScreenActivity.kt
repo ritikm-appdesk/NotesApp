@@ -2,8 +2,6 @@ package com.example.notesapp.ui.activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.net.wifi.WifiConfiguration.AuthAlgorithm.SHARED
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity

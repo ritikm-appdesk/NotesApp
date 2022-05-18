@@ -2,7 +2,6 @@ package com.example.notesapp.ui.fragments
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +19,6 @@ import com.example.notesapp.viewmodel.NotesViewModel
 import com.example.notesapp.viewmodel.NotesViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_note.*
-import java.util.*
 
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
@@ -40,10 +38,10 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         val repository = AppRepository(AppDatabase(requireActivity()))
         val viewModelFactory = NotesViewModelProviderFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
         var type = resources.getStringArray(R.array.type)[0]
 
-        id_type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+        id_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
                 selectedItemView: View?,
@@ -57,7 +55,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
             override fun onNothingSelected(p0: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
-        })
+        }
         back_button.setOnClickListener {
             findNavController().popBackStack()
         }

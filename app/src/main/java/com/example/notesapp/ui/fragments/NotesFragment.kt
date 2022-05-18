@@ -37,7 +37,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
 
         val repository = AppRepository(AppDatabase(requireActivity()))
         val viewModelFactory = NotesViewModelProviderFactory(repository)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(NotesViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
 
         val note = args.notes
 
@@ -63,7 +63,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
             idbody.text = idebody.text
             idheading.text = heading.text
             var t = resources.getStringArray(R.array.type)[0]
-            id_stype.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            id_stype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parentView: AdapterView<*>?,
                     selectedItemView: View?,
@@ -76,7 +76,7 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     TODO("Not yet implemented")
                 }
-            })
+            }
             idtype.text = t
             val head = idheading.text.toString()
             val body = idbody.text.toString()
@@ -93,14 +93,6 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                }
            }
         }
-    }
-    private fun backButtonHandle() {
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    activity?.let { finishAffinity(it) }
-                }
-            })
     }
 
 
