@@ -15,4 +15,11 @@
     <string name="enter_your_note">Enter your Note</string>
     <string name="notify">NOTIFY</string>
     <string name="notes_image">Notes Image</string>
+    <string name="add_new_note">Add new Note</string>
+    <string name="inorder_to_see_something_you_have_to_add_something">Inorder to see something you have to add something!</string>
+    <string name="hash">-</string>
+    <string name="delete_button">delete button</string>
+    <string name="back_button">back button</string>
+    <string name="save_button">save button</string>
+    <string name="edit_a_note">edit a note</string>
 </resources>

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.R
-import com.example.notesapp.adapters.AppRVAdapter
+import com.example.notesapp.adapters.AppRecyclerViewAdapter
 import com.example.notesapp.database.AppDatabase
 import com.example.notesapp.database.AppRepository
 import com.example.notesapp.model.Notes
@@ -21,9 +21,9 @@ import com.example.notesapp.viewmodel.NotesViewModelProviderFactory
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickListener {
+class MainFragment : Fragment(R.layout.fragment_main),AppRecyclerViewAdapter.DeleteClickListener {
 
-    private lateinit var rvAdapter: AppRVAdapter
+    private lateinit var rvAdapter: AppRecyclerViewAdapter
     private lateinit var viewModel: NotesViewModel
 
     override fun onCreateView(
@@ -40,9 +40,9 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
         viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
         viewModel.getAll().observe(viewLifecycleOwner){
             if (it.isEmpty()) {
-                defaultid.visibility = View.VISIBLE
+                tvDefault.visibility = View.VISIBLE
             } else {
-                defaultid.visibility = View.VISIBLE
+                tvDefault.visibility = View.VISIBLE
             }
             setupRV(it as MutableList<Notes>)
         }
@@ -64,15 +64,15 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun setupRV(ls: MutableList<Notes>) {
-        rvAdapter = AppRVAdapter(ls,this)
-        if (ls.size == 0) {
-            defaultid.visibility = View.VISIBLE
+    private fun setupRV(list: MutableList<Notes>) {
+        rvAdapter = AppRecyclerViewAdapter(list,this)
+        if (list.size == 0) {
+            tvDefault.visibility = View.VISIBLE
         } else {
-            defaultid.visibility = View.GONE
+            tvDefault.visibility = View.GONE
         }
 
-        id_rv.apply {
+        rvNotes.apply {
             adapter = rvAdapter
             layoutManager = LinearLayoutManager(activity)
         }
@@ -98,7 +98,7 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val note = rvAdapter.ls[position]
+                val note = rvAdapter.list[position]
                 viewModel.delete(note)
                 Snackbar.make(view!!, "Note Deleted!", Snackbar.LENGTH_LONG).apply {
                     setAction("Undo") {
@@ -109,7 +109,7 @@ class MainFragment : Fragment(R.layout.fragment_main),AppRVAdapter.DeleteClickLi
             }
         }
         ItemTouchHelper(itemTouchHelper).apply {
-            attachToRecyclerView(id_rv)
+            attachToRecyclerView(rvNotes)
         }
     }
 }

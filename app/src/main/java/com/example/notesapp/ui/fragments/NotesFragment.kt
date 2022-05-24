@@ -30,34 +30,31 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val repository = AppRepository(AppDatabase(requireActivity()))
         val viewModelFactory = NotesViewModelProviderFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
-
         val note = args.notes
-
-        idheading.text = note.heading
-        iddate.text = note.date
-        idbody.text = note.body
+        tvHeading.text = note.heading
+        tvDate2.text = note.date
+        tvBody.text = note.body
         idtype.text = note.type
 
-        back.setOnClickListener{
+        ivBack.setOnClickListener{
             findNavController().popBackStack()
         }
 
-        idiv.setOnClickListener {
+        ivEdit.setOnClickListener {
             switcher.showNext()
             switcheriv.showNext()
             switcher1.showNext()
             switcher2.showNext()
         }
-        id_ive.setOnClickListener {
+        ivTick2.setOnClickListener {
 
-            idbody.text = idebody.text
-            idheading.text = heading.text
+            tvBody.text = etbody.text
+            tvHeading.text = etHeading2.text
             var t = resources.getStringArray(R.array.type)[0]
-            id_stype.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            spinnerType2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parentView: AdapterView<*>?,
                     selectedItemView: View?,
@@ -72,11 +69,11 @@ class NotesFragment : Fragment(R.layout.notes_fragment) {
                 }
             }
             idtype.text = t
-            val head = idheading.text.toString()
-            val body = idbody.text.toString()
+            val head = tvHeading.text.toString()
+            val body = tvBody.text.toString()
             val types = t
-           id_ive.setOnClickListener{
-               if(!TextUtils.isEmpty(idheading.text.toString()) && !TextUtils.isEmpty(idbody.text.toString())){
+           ivTick2.setOnClickListener{
+               if(!TextUtils.isEmpty(tvHeading.text.toString()) && !TextUtils.isEmpty(tvBody.text.toString())){
                    viewModel.update(Notes(note.id, head, body, note.date, types))
                    switcher.showNext()
                    switcheriv.showNext()

@@ -9,7 +9,6 @@ class Constants {
             val date = c.get(Calendar.DATE)
             val month = c.get(Calendar.MONTH) + 1
             val year = c.get(Calendar.YEAR)
-
             return "$date/$month/$year"
         }
     }

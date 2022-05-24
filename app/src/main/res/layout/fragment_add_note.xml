@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/back_button"
+            android:id="@+id/ivBackButton"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/text_heading"
             android:layout_gravity="start"
@@ -22,7 +22,8 @@
             android:layout_marginTop="@dimen/tendp"
             android:src="@drawable/icons8_left_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/back_button" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -32,7 +33,7 @@
             android:fadingEdgeLength="@dimen/tendp"
             android:padding="@dimen/twentysp"
             android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/back_button">
+            app:layout_constraintTop_toBottomOf="@id/ivBackButton">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,27 +55,30 @@
                     android:weightSum="2">
 
                     <EditText
-                        android:id="@+id/id_heading"
+                        android:id="@+id/tvHeading2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.9"
                         android:hint="@string/heading"
                         android:textColor="?colorOnPrimary"
                         android:textColorHint="?colorOnPrimary"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:inputType="text"
+                        android:autofillHints="Heading" />
 
                     <ImageView
-                        android:id="@+id/id_iv"
+                        android:id="@+id/ivTick"
                         android:layout_width="@dimen/twentyfivedp"
                         android:layout_height="@dimen/text_heading"
                         android:layout_gravity="center"
                         android:layout_weight="0.1"
                         android:background="@drawable/icons8_checkmark_2"
-                        android:backgroundTint="?colorOnPrimary" />
+                        android:backgroundTint="?colorOnPrimary"
+                        android:contentDescription="@string/save_button" />
                 </LinearLayout>
 
                 <Spinner
-                    android:id="@+id/id_type"
+                    android:id="@+id/spinnerType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="10dp"
@@ -84,13 +88,15 @@
                     android:textColor="?colorOnPrimary" />
 
                 <EditText
-                    android:id="@+id/id_body"
+                    android:id="@+id/etBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="?colorOnPrimary"
                     android:hint="@string/enter_your_note"
                     android:textColor="?colorOnPrimary"
-                    android:textColorHint="?colorOnPrimary" />
+                    android:textColorHint="?colorOnPrimary"
+                    android:inputType="text"
+                    android:importantForAutofill="no" />
             </LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

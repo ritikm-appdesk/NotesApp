@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/id_number"
+            android:id="@+id/tvNumber"
             android:layout_width="@dimen/zerodp"
             android:layout_height="@dimen/zerodp"
             android:layout_margin="@dimen/tendp"
@@ -22,14 +22,14 @@
             android:text="@string/example_number"
             android:textColor="?colorOnPrimary"
             android:textSize="@dimen/thirtysp"
-            app:layout_constraintBottom_toTopOf="@id/id_date"
-            app:layout_constraintEnd_toStartOf="@id/id_topic"
+            app:layout_constraintBottom_toTopOf="@id/tvDate"
+            app:layout_constraintEnd_toStartOf="@id/tvBody2"
             app:layout_constraintHorizontal_weight="10"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/id_heading"
+            android:id="@+id/tvHeading2"
             android:layout_width="@dimen/zerodp"
             android:layout_height="@dimen/zerodp"
             android:layout_margin="@dimen/tendp"
@@ -39,28 +39,28 @@
             android:textColor="?colorOnPrimary"
             android:textSize="@dimen/thirtysp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/id_topic"
+            app:layout_constraintBottom_toTopOf="@id/tvBody2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="90"
-            app:layout_constraintStart_toEndOf="@id/id_number"
+            app:layout_constraintStart_toEndOf="@id/tvNumber"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/id_topic"
+            android:id="@+id/tvBody2"
             android:layout_width="@dimen/zerodp"
             android:layout_height="@dimen/zerodp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/dummytext"
             android:textColor="?colorOnPrimary"
-            app:layout_constraintBottom_toTopOf="@id/id_date"
+            app:layout_constraintBottom_toTopOf="@id/tvDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="90"
-            app:layout_constraintStart_toEndOf="@id/id_number"
-            app:layout_constraintTop_toBottomOf="@id/id_heading" />
+            app:layout_constraintStart_toEndOf="@id/tvNumber"
+            app:layout_constraintTop_toBottomOf="@id/tvHeading2" />
 
         <TextView
-            android:id="@+id/id_date"
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/tendp"
@@ -71,35 +71,33 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/id_topic" />
-        M
-
+            app:layout_constraintTop_toBottomOf="@id/tvBody2" />
         <TextView
-            android:id="@+id/id_type"
+            android:id="@+id/spinnerType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/type"
             android:padding="@dimen/tendp"
             android:textColor="?colorOnPrimary"
-            app:layout_constraintBottom_toBottomOf="@id/id_date"
+            app:layout_constraintBottom_toBottomOf="@id/tvDate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/id_date"
-            app:layout_constraintTop_toTopOf="@id/id_date" />
+            app:layout_constraintStart_toEndOf="@id/tvDate"
+            app:layout_constraintTop_toTopOf="@id/tvDate" />
 
         <ImageView
-            android:id="@+id/iv_delete"
+            android:id="@+id/ivDelete"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/zerodp"
             app:tint="?colorOnPrimary"
             android:layout_margin="@dimen/fivedp"
-            app:layout_constraintLeft_toRightOf="@id/id_type"
+            app:layout_constraintLeft_toRightOf="@id/spinnerType"
             android:src="@drawable/ic_icons8_delete__1_"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/id_type"
-            app:layout_constraintBottom_toBottomOf="@id/id_type"
+            app:layout_constraintTop_toTopOf="@id/spinnerType"
+            app:layout_constraintBottom_toBottomOf="@id/spinnerType"
             app:layout_constraintHorizontal_bias="0.9"
-            />
+            android:contentDescription="@string/delete_button" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

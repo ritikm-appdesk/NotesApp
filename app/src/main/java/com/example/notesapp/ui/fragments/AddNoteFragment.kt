@@ -31,8 +31,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
     ): View? {
         return inflater.inflate(R.layout.fragment_add_note, container, false)
     }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,7 +39,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
         viewModel = ViewModelProvider(this, viewModelFactory)[NotesViewModel::class.java]
         var type = resources.getStringArray(R.array.type)[0]
 
-        id_type.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
                 selectedItemView: View?,
@@ -54,14 +52,14 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                 TODO("Not yet implemented")
             }
         }
-        back_button.setOnClickListener {
+        ivBackButton.setOnClickListener {
             findNavController().popBackStack()
         }
 
-        id_iv.setOnClickListener {
-            if (!TextUtils.isEmpty(id_heading.text.toString()) && !TextUtils.isEmpty(id_body.text.toString())) {
-                val head = id_heading.text.toString()
-                val body = id_body.text.toString()
+        ivTick.setOnClickListener {
+            if (!TextUtils.isEmpty(tvHeading2.text.toString()) && !TextUtils.isEmpty(etBody.text.toString())) {
+                val head = tvHeading2.text.toString()
+                val body = etBody.text.toString()
                 val types = type
                 val date = getDate()
                 val note = Notes(null, head, body, date, types)
@@ -73,7 +71,6 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
                     show()
                 }
             }
-
         }
     }
 }
